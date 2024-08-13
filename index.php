@@ -1,5 +1,5 @@
 <?php
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,3 +22,4 @@
     <script src="js/scripts.js"></script>
 </body>
 </html>
+?>
