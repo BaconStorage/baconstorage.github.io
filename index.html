@@ -10,7 +10,7 @@
     <ul id="fileList"></ul>
 
     <script>
-        fetch('script.php')
+        fetch('/script.php')
             .then(response => response.json())
             .then(files => {
                 const fileList = document.getElementById('fileList');
