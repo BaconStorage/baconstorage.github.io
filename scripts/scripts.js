@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const folderPath = 'Scripts';
 
     // GitHub API URL to fetch contents of the Scripts folder
-    const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
+    const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/`;
 
     fetch(apiUrl)
         .then(response => response.json())
