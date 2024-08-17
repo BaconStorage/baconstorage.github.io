@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bacon Storage</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>File List</title>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Bacon Storage</h1>
-    </header>
-    <main>
-        <p>This is a PHP version of the Bacon Storage website.</p>
-        <h2>Lua Scripts Folder Contents:</h2>
-        <ul>
-            <li>script1.lua</li>
-            <li>script2.lua</li>
-            <li>script3.lua</li>
-            <!-- Add more Lua scripts here -->
-        </ul>
-    </main>
-    <footer>
-        <p>© 2024 Bacon Storage</p>
-    </footer>
-    <script src="js/scripts.js"></script>
+    <h1>Files in Scripts Folder</h1>
+    <ul id="fileList"></ul>
+
+    <script>
+        fetch('path/to/your/php/script.php')
+            .then(response => response.json())
+            .then(files => {
+                const fileList = document.getElementById('fileList');
+                files.forEach(file => {
+                    if (file !== '.' && file !== '..') {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = file;
+                        fileList.appendChild(listItem);
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching file list:', error));
+    </script>
 </body>
 </html>
