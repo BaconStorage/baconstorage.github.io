@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const scriptsList = document.getElementById('scripts-list');
     const repoOwner = 'BaconStorage';
-    const repoName = 'baconstorage.github.io';
+    const repoName = 'Scripts';
     const folderPath = 'Scripts';
 
     // GitHub API URL to fetch contents of the Scripts folder
