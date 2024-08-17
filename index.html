@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,11 +12,18 @@
     </header>
     <main>
         <p>This is a PHP version of the Bacon Storage website.</p>
+        <pre id="script-content"></pre>
     </main>
     <footer>
         <p>© 2024 Bacon Storage</p>
     </footer>
-    <script src="js/scripts.js"></script>
+    <script>
+        fetch('js/scripts.js')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('script-content').textContent = data;
+            })
+            .catch(error => console.error('Error fetching script:', error));
+    </script>
 </body>
 </html>
-
