@@ -1,16 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
     const scriptsList = document.getElementById('scripts-list');
+    const repoOwner = 'BaconStorage';
+    const repoName = 'baconstorage.github.io';
+    const folderPath = 'Scripts';
 
-    // Simulate fetching Lua scripts from the server
-    const luaScripts = ['print.lua', 'script2.lua', 'script3.lua'];
+    // GitHub API URL to fetch contents of the Scripts folder
+    const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
 
-    luaScripts.forEach(script => {
-        const listItem = document.createElement('li');
-        listItem.textContent = script;
-        listItem.addEventListener('click', () => {
-            alert(`Opening ${script}`);
-            // Here you can add functionality to open or display the script content
-        });
-        scriptsList.appendChild(listItem);
-    });
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(file => {
+                if (file.name.endsWith('.lua')) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = file.name;
+                    listItem.addEventListener('click', () => {
+                        fetch(file.download_url)
+                            .then(response => response.text())
+                            .then(scriptContent => {
+                                alert(`Content of ${file.name}:\n\n${scriptContent}`);
+                                // Here you can add functionality to display the script content in a more user-friendly way
+                            });
+                    });
+                    scriptsList.appendChild(listItem);
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching scripts:', error));
 });
