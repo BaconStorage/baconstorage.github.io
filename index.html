@@ -31,10 +31,14 @@ $files = json_decode($response, true);
         <h2>Lua Scripts Folder Contents:</h2>
         <ul>
             <?php
-            foreach($files as $file) {
-                if (pathinfo($file['name'], PATHINFO_EXTENSION) === 'lua') {
-                    echo file['name'];
+            if (is_array($files)) {
+                foreach($files as $file) {
+                    if (pathinfo($file['name'], PATHINFO_EXTENSION) === 'lua') {
+                        echo "<li>{$file['name']}</li>";
+                    }
                 }
+            } else {
+                echo "<li>Unable to fetch files. Please check the repository details.</li>";
             }
             ?>
         </ul>
