@@ -1,28 +1,47 @@
+<?php
+$repoOwner = 'your-github-username';
+$repoName = 'your-repo-name';
+$dir = 'path/to/your/lua/scripts/folder';
+$apiUrl = "https://api.github.com/repos/$repoOwner/$repoName/contents/$dir";
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $apiUrl);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_USERAGENT, 'YourAppName');
+$response = curl_exec($ch);
+curl_close($ch);
+
+$files = json_decode($response, true);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File List</title>
+    <title>Bacon Storage</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Files in Scripts Folder</h1>
-    <ul id="fileList"></ul>
-
-    <script>
-        fetch('/script.php')
-            .then(response => response.json())
-            .then(files => {
-                const fileList = document.getElementById('fileList');
-                files.forEach(file => {
-                    if (file !== '.' && file !== '..') {
-                        const listItem = document.createElement('li');
-                        listItem.textContent = file;
-                        fileList.appendChild(listItem);
-                    }
-                });
-            })
-            .catch(error => console.error('Error fetching file list:', error));
-    </script>
+    <header>
+        <h1>Welcome to Bacon Storage</h1>
+    </header>
+    <main>
+        <p>This is a PHP version of the Bacon Storage website.</p>
+        <h2>Lua Scripts Folder Contents:</h2>
+        <ul>
+            <?php
+            foreach($files as $file) {
+                if (pathinfo($file['name'], PATHINFO_EXTENSION) === 'lua') {
+                    echo "<li>{$file['name']}</li>";
+                }
+            }
+            ?>
+        </ul>
+    </main>
+    <footer>
+        <p>© 2024 Bacon Storage</p>
+    </footer>
+    <script src="js/scripts.js"></script>
 </body>
 </html>
