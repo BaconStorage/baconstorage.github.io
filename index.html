@@ -33,7 +33,7 @@ $files = json_decode($response, true);
             <?php
             foreach($files as $file) {
                 if (pathinfo($file['name'], PATHINFO_EXTENSION) === 'lua') {
-                    echo "<li>{$file['name']}</li>";
+                    echo file['name'];
                 }
             }
             ?>
