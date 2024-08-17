@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const scriptsList = document.getElementById('scripts-list');
 
     // Simulate fetching Lua scripts from the server
-    const luaScripts = ['script1.lua', 'script2.lua', 'script3.lua'];
+    const luaScripts = ['print.lua', 'script2.lua', 'script3.lua'];
 
     luaScripts.forEach(script => {
         const listItem = document.createElement('li');
