@@ -1,19 +1,3 @@
-<?php
-$repoOwner = 'BaconStorage';
-$repoName = 'baconstorage.github.io';
-$dir = 'Scripts';
-$apiUrl = "https://api.github.com/repos/$repoOwner/$repoName/contents/$dir";
-
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $apiUrl);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_USERAGENT, 'YourAppName');
-$response = curl_exec($ch);
-curl_close($ch);
-
-$files = json_decode($response, true);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,24 +12,18 @@ $files = json_decode($response, true);
     </header>
     <main>
         <p>This is a PHP version of the Bacon Storage website.</p>
-        <h2>Lua Scripts Folder Contents:</h2>
-        <ul>
-            <?php
-            if (is_array($files)) {
-                foreach($files as $file) {
-                    if (pathinfo($file['name'], PATHINFO_EXTENSION) === 'lua') {
-                        echo "<li>{$file['name']}</li>";
-                    }
-                }
-            } else {
-                echo "<li>Unable to fetch files. Please check the repository details.</li>";
-            }
-            ?>
-        </ul>
+        <pre id="script-content"></pre>
     </main>
     <footer>
         <p>© 2024 Bacon Storage</p>
     </footer>
-    <script src="js/scripts.js"></script>
+    <script>
+        fetch('js/scripts.js')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('script-content').textContent = data;
+            })
+            .catch(error => console.error('Error fetching script:', error));
+    </script>
 </body>
 </html>
