@@ -16,6 +16,19 @@
     <footer>
         <p>© 2024 Lua Scripts Browser</p>
     </footer>
-    <script src="js/scripts.js"></script>
+    <!-- Include Fengari -->
+    <script src="https://unpkg.com/fengari-web/umd/fengari-web.js"></script>
+    <script>
+        // Example Lua script
+        const luaScript = `
+            local data = {'Lua', 'JavaScript', 'Python'}
+            for i, v in ipairs(data) do
+                print(i .. ': ' .. v)
+            end
+        `;
+
+        // Run the Lua script using Fengari
+        fengari.load(luaScript)();
+    </script>
 </body>
 </html>
