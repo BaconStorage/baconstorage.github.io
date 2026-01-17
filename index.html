@@ -3,25 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Website</title>
-    <link rel="stylesheet" href="style.css">
+    <title>BaconStorage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Modern Site</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Tools</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="active">Home</a>
+                <a href="repositories.html">Repositories</a>
+            </nav>
+        </div>
     </header>
-    <section class="content">
-        <p>This is a sleek, minimal, and modern website hosted on GitHub Pages!</p>
-        <button onclick="showMessage()">Click Me</button>
-    </section>
-    <script src="script.js"></script>
+
+    <main class="main">
+        <div class="container">
+            <div class="content-grid">
+                <aside class="sidebar">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-item active"><i class="fas fa-home"></i> Home</a></li>
+                        <li><a href="repositories.html" class="nav-item"><i class="fas fa-code"></i> Repositories</a></li>
+                    </ul>
+                </aside>
+
+                <div class="page-content">
+                    <div class="card">
+                        <h1>Welcome to Bacon's webserver</h1>
+                        <p>A clean, modern GitHub-inspired site.</p>
+                        <p>Explore my <strong>Repositories</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 BaconStorage. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
